@@ -1,0 +1,42 @@
+<template>
+  <button
+    id="navAction"
+    class="mx-auto lg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75"
+    :class="cssClass"
+    @click="onClick"
+  >
+    <div class="flex items-center">
+      <div>
+        <slot name="icon" />
+      </div>
+      <div class="ml-1">{{ label }}</div>
+    </div>
+  </button>
+</template>
+<script>
+export default {
+  name: 'action-link',
+  props: {
+    onClick: {
+      type: Function,
+      default() {
+        return () => undefined;
+      }
+    },
+    label: {
+      type: String
+    },
+    isScrolled: {
+      type: Boolean
+    }
+  },
+  data() {
+    return {};
+  },
+  computed: {
+    cssClass() {
+      return this.isScrolled ? 'gradient text-white' : 'bg-white text-gray-800';
+    }
+  }
+};
+</script>
